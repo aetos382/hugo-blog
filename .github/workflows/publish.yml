@@ -32,6 +32,10 @@ jobs:
           ruby-version: '3.4'
           bundler-cache: true
 
+      - name: check environment
+        run: |
+          asciidoctor --version
+
       - name: Install Hugo
         run: |
           curl -qfsSL https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.deb -o hugo.deb
