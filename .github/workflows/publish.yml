@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-24.04
     env:
       HUGO_VERSION: 0.160.1
+      DART_SASS_VERSION: 1.99.0
       TZ: Asia/Tokyo
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -27,21 +28,45 @@ jobs:
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
         id: pages
 
+      - uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6.4.0
+        with:
+          go-version-file: 'src/go.mod'
+
       - uses: ruby/setup-ruby@7372622e62b60b3cb750dcd2b9e32c247ffec26a # v1.302.0
         with:
           ruby-version: '3.4'
           bundler-cache: true
 
+      - name: Create bin directory
+        run: |
+          mkdir -p ${GITHUB_WORKSPACE}/bin
+          echo "${GITHUB_WORKSPACE}/bin" >> $GITHUB_PATH
+
       - name: Generate binstubs
         run: |
           bundle binstubs asciidoctor
-          echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
 
       - name: Install Hugo
         run: |
-          curl -qfsSL https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.deb -o hugo.deb
-          sudo dpkg -i hugo.deb
-          rm hugo.deb
+          curl -qfsSL https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.tar.gz -o hugo.tar.gz
+          tar -xzf hugo.tar.gz
+          mv hugo ${GITHUB_WORKSPACE}/bin/
+          rm hugo.tar.gz
+
+      - name: Install Dart Sass
+        run: |
+          curl -qfsSL https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz -o dart-sass.tar.gz
+          tar -xzf dart-sass.tar.gz
+          mv dart-sass/sass ${GITHUB_WORKSPACE}/bin/
+          rm dart-sass.tar.gz
+          rm -rf dart-sass
+
+      - name: Verify installations
+        run: |
+          echo "Dart Sass: $(sass --version)"
+          echo "Hugo: $(hugo version)"
+          echo "Go: $(go version)"
+          echo "Asciidoctor: $(asciidoctor --version)"
 
       - name: Build
         working-directory: src
