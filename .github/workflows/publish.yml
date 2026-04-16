@@ -44,7 +44,7 @@ jobs:
 
       - name: Generate binstubs
         run: |
-          bundle binstubs asciidoctor
+          bundle binstubs asciidoctor --path ${GITHUB_WORKSPACE}/bin/
 
       - name: Install Hugo
         run: |
