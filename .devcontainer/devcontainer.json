@@ -5,11 +5,7 @@
   "init": true,
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/rails/devcontainer/features/ruby:2": {
-      "version": "4.0.2",
-      "versionManager": "mise",
-      "usePrecompiledRubies": true
-    }
+    "ghcr.io/devcontainers/features/ruby:1": {}
   },
   "remoteUser": "vscode",
   "remoteEnv": {
