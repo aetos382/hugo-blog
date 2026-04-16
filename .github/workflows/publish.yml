@@ -32,8 +32,10 @@ jobs:
           ruby-version: '3.4'
           bundler-cache: true
 
-      - name: test asciidoctor
-        run: bundle exec asciidoctor --version
+      - name: Generate binstubs
+        run: |
+          bundle binstubs asciidoctor
+          echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
 
       - name: Install Hugo
         run: |
