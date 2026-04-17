@@ -37,7 +37,7 @@ jobs:
         id: ruby
         with:
           ruby-version: '4.0.2'
-          bundler-cache: false
+          bundler-cache: true
 
       - run: echo ${{ steps.ruby.outputs.ruby-prefix }}
 
@@ -51,6 +51,7 @@ jobs:
           echo "${HOME}/.gem/bin" >> $GITHUB_PATH
 
       - name: Install bundle
+        if: false
         run: |
           set -euo pipefail
           bundle config set --global path.system true
