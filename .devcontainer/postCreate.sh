@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+bundle config set --global disable_shared_gems true
+
 (cd src && bundle install)
 
 curl -fsSL https://claude.ai/install.sh | bash
