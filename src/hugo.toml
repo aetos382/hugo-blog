@@ -15,7 +15,7 @@ theme = 'github-style'
 
 [security]
   [security.exec]
-    allow =[ '^asciidoctor$', '^git$', '^go$' ]
+    allow =[ '^asciidoctor$', '^git$', '^go$', '^sass$' ]
     osEnv = [ '(?i)^(PATH|GEM_PATH)$' ]
 
 [markup]
