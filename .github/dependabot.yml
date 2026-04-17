@@ -29,7 +29,7 @@ updates:
       default-days: 7
 
   - package-ecosystem: "bundler"
-    directory: "/"
+    directory: "/src"
     schedule:
       interval: "weekly"
     cooldown:
