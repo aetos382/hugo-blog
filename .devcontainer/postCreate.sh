@@ -8,8 +8,3 @@ bundle config set --global bin ${PWD}/src/bin
 
 curl -fqsLS https://claude.ai/install.sh | bash
 
-hugo version | echo "hugo: $(cat -)"
-sass --version | echo "dart-sass: $(cat -)"
-asciidoctor --version | echo "asciidoctor: $(cat -)"
-go version | echo "go: $(cat -)"
-claude --version | echo "claude code: $(cat -)"
