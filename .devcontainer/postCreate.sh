@@ -2,10 +2,11 @@
 set -euo pipefail
 
 bundle config set --global path ${HOME}/.bundle
+bundle config set --global bin ${PWD}/src/bin
 
-(cd src && bundle install)
+(cd src && bundle install && bundle binstubs asciidoctor)
 
-curl -fsSL https://claude.ai/install.sh | bash
+curl -fqsLS https://claude.ai/install.sh | bash
 
 hugo version | echo "hugo: $(cat -)"
 sass --version | echo "dart-sass: $(cat -)"
