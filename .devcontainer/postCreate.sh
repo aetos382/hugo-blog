@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-bundle config set --global disable_shared_gems true
+bundle config set --global path ${HOME}/.bundle
 
 (cd src && bundle install)
 
