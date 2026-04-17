@@ -5,7 +5,8 @@
   "overrideCommand": true,
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/powershell:2": {}
+    "ghcr.io/devcontainers/features/powershell:2": {},
+    "ghcr.io/devcontainers/features/node:1": {}
   },
   "remoteUser": "vscode",
   "remoteEnv": {
@@ -25,6 +26,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "-dbaeumer.vscode-eslint",
         "-golang.go",
         "Anthropic.claude-code",
         "asciidoctor.asciidoctor-vscode",
