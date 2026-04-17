@@ -57,7 +57,7 @@ jobs:
       - name: Create binstubs
         run: |
           set -euo pipefail
-          bundle config set bin .bin
+          bundle config set bin ./bin
           bundle binstubs asciidoctor
 
       - name: Install Hugo
