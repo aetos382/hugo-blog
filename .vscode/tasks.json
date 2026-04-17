@@ -8,8 +8,9 @@
       "isBackground": true,
       "problemMatcher": {
         "pattern": {
-          "regexp": "^ERROR (.*)$",
-          "message": 1
+          "regexp": "^(ERROR|WARN)\\s+(.*)$",
+          "severity": 1,
+          "message": 2
         },
         "background": {
           "activeOnStart": true,
@@ -35,8 +36,9 @@
       },
       "problemMatcher": {
         "pattern": {
-          "regexp": "^ERROR (.*)$",
-          "message": 1
+          "regexp": "^(ERROR|WARN)\\s+(.*)$",
+          "severity": 1,
+          "message": 2
         },
         "background": {
           "activeOnStart": false,
@@ -56,7 +58,18 @@
       "options": {
         "cwd": "${workspaceFolder}/src"
       },
-      "problemMatcher": [],
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^(ERROR|WARN)\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": false,
+          "beginsPattern": "^Start building sites",
+          "endsPattern": "^Total in"
+        }
+      },
       "presentation": {
         "reveal": "always",
         "panel": "dedicated"
