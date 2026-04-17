@@ -15,6 +15,7 @@
     "PATH": "${containerWorkspaceFolder}/src/bin:${containerEnv:PATH}"
   },
   "postCreateCommand": "bash .devcontainer/postCreate.sh",
+  "postStartCommand": "bash .devcontainer/postStart.sh",
   "mounts": [
     {
       "type": "volume",
