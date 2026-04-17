@@ -1,0 +1,79 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Hugo: Server",
+      "type": "shell",
+      "command": "hugo-server",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^ERROR (.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^Start building sites",
+          "endsPattern": "^Web Server is available"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Hugo: Build",
+      "type": "shell",
+      "command": "hugo build",
+      "options": {
+        "cwd": "${workspaceFolder}/src"
+      },
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^ERROR (.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": false,
+          "beginsPattern": "^Start building sites",
+          "endsPattern": "^Total in"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Hugo: Build (production)",
+      "type": "shell",
+      "command": "hugo build --environment production --minify",
+      "options": {
+        "cwd": "${workspaceFolder}/src"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Bundle: Install",
+      "type": "shell",
+      "command": "bundle install",
+      "options": {
+        "cwd": "${workspaceFolder}/src"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}
