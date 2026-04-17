@@ -1,16 +1,16 @@
 {
   "dockerComposeFile": "docker-compose.yml",
   "service": "devcontainer",
-  "overrideCommand": true,
   "init": true,
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/powershell:2": {}
   },
   "remoteUser": "vscode",
   "remoteEnv": {
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
     "CLAUDE_CONFIG_DIR": "/home/vscode/.claude",
-    "PATH": "${containerWorkspaceFolder}/bin:${containerEnv:PATH}",
+    "PATH": "${containerWorkspaceFolder}/src/bin:${containerEnv:PATH}",
     "TZ": "Asia/Tokyo"
   },
   "postCreateCommand": "bash .devcontainer/postCreate.sh",

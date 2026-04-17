@@ -31,8 +31,10 @@ USER vscode
 
 RUN mkdir -p /home/vscode/.claude
 
-ENV GEM_HOME=/home/vscode/.gem
-ENV GEM_PATH=/home/vscode/.gem
-
 ENV PATH=/usr/local/hugo:/usr/local/dart-sass:/usr/local/ruby/bin:/usr/local/go/bin:$PATH
 ENV GOTOOLCHAIN=local
+
+COPY --chmod=+x ["docker-entrypoint.sh", "/"]
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["sleep", "infinity"]
