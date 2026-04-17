@@ -11,7 +11,8 @@
   "remoteEnv": {
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
     "CLAUDE_CONFIG_DIR": "/home/vscode/.claude",
-    "TZ": "Asia/Tokyo"
+    "TZ": "Asia/Tokyo",
+    "PATH": "${containerWorkspaceFolder}/src/bin:${containerEnv:PATH}"
   },
   "postCreateCommand": "bash .devcontainer/postCreate.sh",
   "mounts": [
