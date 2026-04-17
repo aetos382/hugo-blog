@@ -2,7 +2,7 @@ name: aetos-blog
 
 services:
   devcontainer:
-    image: ghcr.io/aetos.blog:latest
+    image: ghcr.io/aetos382/aetos.blog:latest
     volumes:
       - type: volume
         source: claude-code-config
