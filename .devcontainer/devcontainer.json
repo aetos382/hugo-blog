@@ -3,6 +3,7 @@
   "service": "devcontainer",
   "init": true,
   "overrideCommand": true,
+  "workspaceFolder": "/workspaces/aetos.blog",
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/powershell:2": {}
@@ -14,14 +15,7 @@
     "TZ": "Asia/Tokyo",
     "PATH": "${containerWorkspaceFolder}/src/bin:${containerWorkspaceFolder}/src/scripts:${containerEnv:PATH}"
   },
-  "postCreateCommand": "bash .devcontainer/postCreate.sh",
-  "mounts": [
-    {
-      "type": "volume",
-      "source": "claude-code-config",
-      "target": "/home/vscode/.claude"
-    }
-  ],
+  "postCreateCommand": "bash ${containerWorkspaceFolder}/.devcontainer/postCreate.sh",
   "customizations": {
     "vscode": {
       "extensions": [
