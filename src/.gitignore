@@ -3,8 +3,14 @@ resources/
 bin/
 node_modules/
 
-.hugo_build.lock
 *.local.*
+.hugo_build.lock
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
 
 assets/jsconfig.json
-

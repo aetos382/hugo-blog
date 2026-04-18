@@ -17,7 +17,7 @@ theme = 'wangchucheng.com/hugo-eureka'
 [security]
   [security.exec]
     allow =[ '^asciidoctor$', '^git$', '^go$', '^sass$', '^npx$', '^postcss$' ]
-    osEnv = [ '(?i)^(PATH|GEM_PATH)$' ]
+    osEnv = [ '(?i)^(PATH|GEM_PATH|BUNDLE_PATH|BUNDLE_GEMFILE)$' ]
 
 [markup]
   [markup.asciidocExt]
