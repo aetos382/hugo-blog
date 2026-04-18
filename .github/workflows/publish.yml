@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    types: [ opened, synchronize, reopened ]
+    types: [ opened, synchronize, reopened, labeled ]
   workflow_dispatch:
 
 permissions:
@@ -83,22 +83,26 @@ jobs:
       - run: npm ci
         working-directory: src
 
-      - name: Set base URL
-        id: base-url
+      - name: Set build params
+        id: build-params
         run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            echo "value=https://pr-${{ github.event.pull_request.number }}-aetos-blog.aetos.workers.dev" >> $GITHUB_OUTPUT
+          if ${{ github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'preview') }}; then
+            echo "base-url=https://pr-${{ github.event.pull_request.number }}-aetos-blog.aetos.workers.dev" >> $GITHUB_OUTPUT
+            echo "environment=staging" >> $GITHUB_OUTPUT
+            echo "minify=false" >> $GITHUB_OUTPUT
           else
-            echo "value=${{ vars.CLOUDFLARE_WORKER_BASE_URL }}" >> $GITHUB_OUTPUT
+            echo "base-url=${{ vars.CLOUDFLARE_WORKER_BASE_URL }}" >> $GITHUB_OUTPUT
+            echo "environment=production" >> $GITHUB_OUTPUT
+            echo "minify=true" >> $GITHUB_OUTPUT
           fi
 
       - name: Build
         working-directory: src
         run: >
           hugo build
-          --baseURL ${{ steps.base-url.outputs.value }}
-          --environment production
-          --minify
+          --baseURL ${{ steps.build-params.outputs.base-url }}
+          --environment ${{ steps.build-params.outputs.environment }}
+          --minify=${{ steps.build-params.outputs.minify }}
 
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
@@ -116,7 +120,7 @@ jobs:
 
       - name: Deploy preview
         uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd #v3.15.0
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'preview')
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_WORKER_DEPLOY_API_TOKEN }}
