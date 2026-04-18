@@ -3,6 +3,7 @@
   "service": "devcontainer",
   "init": true,
   "overrideCommand": true,
+  "workspaceFolder": "/workspaces/aetos.blog",
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/powershell:2": {}
@@ -14,7 +15,7 @@
     "TZ": "Asia/Tokyo",
     "PATH": "${containerWorkspaceFolder}/src/bin:${containerWorkspaceFolder}/src/scripts:${containerEnv:PATH}"
   },
-  "postCreateCommand": "echo pwd:$(pwd) && echo localWorkspaceFolder:${localWorkspaceFolder} && echo containerWorkspaceFolder:${containerWorkspaceFolder} && echo localWorkspaceFolderBaseName:${localWorkspaceFolderBaseName} && echo containerWorkspaceFolderBasename:${containerWorkspaceFolderBasename} && bash .devcontainer/postCreate.sh",
+  "postCreateCommand": "bash ${containerWorkspaceFolder}/.devcontainer/postCreate.sh",
   "customizations": {
     "vscode": {
       "extensions": [
