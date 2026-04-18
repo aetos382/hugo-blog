@@ -18,4 +18,6 @@ class Program
 }
 ----
 
+<!--more-->
+
 image::image.png[]
