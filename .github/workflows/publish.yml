@@ -91,9 +91,10 @@ jobs:
 
       - uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd #v3.15.0
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_PAGES_API_KEY }}
+          apiToken: ${{ secrets.CLOUDFLARE_WORKER_DEPLOY_API_TOKEN }}
           command: >
-            pages deploy src/public
-            --project-name ${{ vars.CLOUDFLARE_PAGES_PROJECT_NAME }}
-            --branch ${{ github.ref_name }}
-            --commit-hash ${{ github.sha }}
+            deploy
+            --name ${{ vars.CLOUDFLARE_WORKER_PROJECT_NAME }}
+            --assets src/public
+            --domain aetos.blog
+
