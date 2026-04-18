@@ -1,6 +1,10 @@
 {
   "private": true,
-  "dependencies": {
+  "devDependencies": {
     "wrangler": "^4.83.0"
+  },
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   }
 }
