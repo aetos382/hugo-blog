@@ -6,7 +6,8 @@
   "workspaceFolder": "/workspaces/aetos.blog",
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/powershell:2": {}
+    "ghcr.io/devcontainers/features/powershell:2": {},
+    "ghcr.io/devcontainers/features/git-lfs:1": {}
   },
   "remoteUser": "vscode",
   "remoteEnv": {
