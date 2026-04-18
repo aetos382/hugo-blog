@@ -3,5 +3,5 @@ resources/
 bin/
 node_modules/
 
-.hugo_build.lock
 *.local.*
+.hugo_build.lock
