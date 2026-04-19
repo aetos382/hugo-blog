@@ -28,6 +28,7 @@
         "EditorConfig.EditorConfig",
         "github.vscode-github-actions",
         "GitHub.vscode-pull-request-github",
+        "jimeh.actionlint",
         "Shopify.ruby-extensions-pack",
         "tamasfe.even-better-toml"
       ],
