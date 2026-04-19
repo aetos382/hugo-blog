@@ -213,7 +213,8 @@ jobs:
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_WORKER_DEPLOY_API_TOKEN }}
-          command: deploy --config src/wrangler.jsonc
+          workingDirectory: src
+          command: deploy --config wrangler.jsonc
 
 
   deploy-preview:
@@ -247,9 +248,10 @@ jobs:
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_WORKER_DEPLOY_API_TOKEN }}
+          workingDirectory: src
           command: >
             versions upload
-            --config src/wrangler.jsonc
+            --config wrangler.jsonc
             --preview-alias pr-${{ needs.gate.outputs.pr-number }}
 
       - name: Post preview URL to PR
